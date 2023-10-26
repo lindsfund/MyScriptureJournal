@@ -27,7 +27,7 @@ namespace MyScriptureJournal.Pages.Scriptures
         public SelectList Book { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public string ScriptureBook { get; set; }
+        public string? ScriptureBook { get; set; }
 
         public async Task OnGetAsync()
         {
