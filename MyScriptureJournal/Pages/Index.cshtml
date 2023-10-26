@@ -1,4 +1,4 @@
-﻿@page "{searchString?}"
+﻿@page 
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -6,16 +6,7 @@
 
 <div class="text-center">
     <h1 class="display-4">My Scripture Journal</h1>
-    <form>
-        <p>
-            Search By Book: <input type="text" @*asp-for=""/>*@
-            <input type="submit" value="Search" />
-        </p>
-        <p>
-            Search By Keyword: <input type="text" @*asp-for=""/>*@
-            <input type="submit" value="Search" />
-        </p>
-    </form>
+    
     <a href="/Scriptures">View All Scriptures</a>
     <a href="/Scriptures/Create">Add New Scripture</a> 
 </div>

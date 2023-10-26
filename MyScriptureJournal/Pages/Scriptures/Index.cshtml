@@ -1,4 +1,4 @@
-@page
+@page "{SearchString?}"
 @model MyScriptureJournal.Pages.Scriptures.IndexModel
 
 @{
@@ -10,6 +10,17 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
+<form>
+    <p>
+        Search By Book: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Search" />
+    </p>
+    @*<p>
+        Search By Keyword: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Search" />
+    </p>*@
+</form>
 <table class="table">
     <thead>
         <tr>
