@@ -10,10 +10,10 @@ namespace MyScriptureJournal.Models
 		[DataType(DataType.Date)]
 		public DateTime EntryDate { get; set; }
 
-		public string? Book { get; set; }
+		public string Book { get; set; }
 		public int Chapter { get; set; }
 		public string? Verse { get; set; }
-        public string? Text { get; set; }
+        public string Text { get; set; }
 		public string? Notes { get; set; }
 	}
 }

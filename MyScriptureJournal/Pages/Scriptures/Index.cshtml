@@ -13,13 +13,14 @@
 
 <form>
     <p>
-        Search By Book: <input type="text" asp-for="SearchString" />
-        <input type="submit" value="Search" />
+        Search By Notes: <select asp-for="ScriptureNote" asp-items="Model.Notes">
+                            <option value="">All</option>
+                         </select>
     </p>
-    @*<p>
-        Search By Keyword: <input type="text" asp-for="SearchString" />
-        <input type="submit" value="Search" />
-    </p>*@
+    <p>
+        Search By Book: <input type="text" asp-for="SearchString" />
+                        <input type="submit" value="Search" />
+    </p>
 </form>
 <table class="table">
     <thead>

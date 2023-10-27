@@ -24,14 +24,18 @@ namespace MyScriptureJournal.Pages.Scriptures
 
         [BindProperty(SupportsGet = true)]
         public string? SearchString { get; set; }
-        public SelectList Book { get; set; }
+
+        public SelectList? Notes { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public string? ScriptureBook { get; set; }
+        public string? ScriptureNote { get; set; }
 
         public async Task OnGetAsync()
         {
-            //using System.Linq;
+            IQueryable<string> notesQuery = from s in _context.Scripture
+                                            orderby s.Notes
+                                            select s.Notes;
+
             var scriptures = from s in _context.Scripture
                              select s;
 
@@ -40,8 +44,14 @@ namespace MyScriptureJournal.Pages.Scriptures
                 scriptures = scriptures.Where(s => s.Book.Contains(SearchString));
             }
 
-            Scripture = await _context.Scripture.ToListAsync();
-            
+            if (!string.IsNullOrEmpty(ScriptureNote))
+            {
+                scriptures = scriptures.Where(x => x.Notes == ScriptureNote);
+            }
+
+            Notes = new SelectList(await notesQuery.Distinct().ToListAsync());
+            Scripture = await scriptures.ToListAsync();
+
         }
     }
 }
