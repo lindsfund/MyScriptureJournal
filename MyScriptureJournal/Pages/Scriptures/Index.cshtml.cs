@@ -30,7 +30,7 @@ namespace MyScriptureJournal.Pages.Scriptures
         [BindProperty(SupportsGet = true)]
         public string? ScriptureNote { get; set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string SortOrder)
         {
             IQueryable<string> notesQuery = from s in _context.Scripture
                                             orderby s.Notes
@@ -39,6 +39,10 @@ namespace MyScriptureJournal.Pages.Scriptures
             var scriptures = from s in _context.Scripture
                              select s;
 
+            //sort by date for default
+            scriptures = scriptures.OrderBy(s => s.EntryDate);
+
+            
             if (!string.IsNullOrEmpty(SearchString))
             {
                 scriptures = scriptures.Where(s => s.Book.Contains(SearchString));
@@ -48,7 +52,7 @@ namespace MyScriptureJournal.Pages.Scriptures
             {
                 scriptures = scriptures.Where(x => x.Notes == ScriptureNote);
             }
-
+           
             Notes = new SelectList(await notesQuery.Distinct().ToListAsync());
             Scripture = await scriptures.ToListAsync();
 
