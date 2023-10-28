@@ -20,3 +20,18 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+h1,
+p,
+a{
+    
+    font-family: 'Patrick Hand SC', cursive;
+    
+}
+
+td {
+    font-family: 'Playpen Sans','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+
